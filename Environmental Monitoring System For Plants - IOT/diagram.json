@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "author": "Giray Doruk Yurtseven",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-breadboard-half", "id": "bb1", "top": -243, "left": -227.6, "attrs": {} },
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 100.84, "attrs": {} },
+    { "type": "chip-soil_sensor", "id": "chip1", "top": 77.82, "left": -187.2, "attrs": {} },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": 19.5,
+      "left": -418.2,
+      "attrs": { "temperature": "40.9", "humidity": "84.5" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 252.8,
+      "left": -95.2,
+      "attrs": {}
+    },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": 42.6, "left": 297.7, "attrs": {} }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "chip1:A0", "esp:34", "green", [ "h-30.92", "v-43.17", "h211.2" ] ],
+    [ "chip1:VCC", "bb1:bp.1", "red", [ "h-59.72", "v-158.37" ] ],
+    [ "chip1:GND", "bb1:bn.1", "black", [ "h0" ] ],
+    [ "bb1:bn.25", "esp:GND.2", "black", [ "v-1.3", "h136" ] ],
+    [ "dht1:GND", "bb1:bn.15", "black", [ "v19.2", "h355.2" ] ],
+    [ "bb1:bp.25", "esp:5V", "orange", [ "v-0.9", "h155.2", "v278.4", "h-144" ] ],
+    [ "dht1:VCC", "bb1:bp.15", "red", [ "v28.8", "h374.4", "v-220.8" ] ],
+    [ "dht1:SDA", "esp:15", "green", [ "v105.6", "h633.7", "v-67.2" ] ],
+    [ "ldr1:VCC", "bb1:bp.17", "red", [ "h0", "v-48", "h-76.8" ] ],
+    [ "ldr1:GND", "bb1:bn.18", "black", [ "h19.2", "v-77.2", "h-96", "v-9.6" ] ],
+    [ "rtc1:5V", "bb1:bp.24", "red", [ "h-67.2", "v-134.8", "h-172.8" ] ],
+    [ "rtc1:GND", "bb1:bn.24", "black", [ "h-57.6", "v-76.8", "h-182.4" ] ],
+    [ "rtc1:SCL", "esp:22", "gold", [ "h-96", "v-38.6" ] ],
+    [ "rtc1:SDA", "esp:4", "green", [ "h-67.2", "v66.9" ] ],
+    [ "ldr1:AO", "esp:35", "green", [ "h9.6", "v-221.5" ] ]
+  ],
+  "dependencies": {}
+}
